@@ -10,8 +10,15 @@ use Illuminate\Support\ServiceProvider;
 
 class FullSmsServiceProvider extends ServiceProvider {
 
-    protected $defer = true;
+    protected $defer = false;
 
+    public function boot() {
+        // Publish config files
+        $this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('full-sms.php'),
+        ]);
+
+    }
     /**
      * Register the service provider.
      *
@@ -26,6 +33,10 @@ class FullSmsServiceProvider extends ServiceProvider {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('MessageSenderFactory', 'FortifyCode\FullSms\Facades\MessageSender');
         });
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/config.php', 'full-sms'
+        );
     }
 
     public function provides() {
