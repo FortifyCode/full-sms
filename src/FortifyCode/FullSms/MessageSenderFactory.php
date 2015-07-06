@@ -18,10 +18,12 @@ class MessageSenderFactory {
         $this->alias_providers = Config::get('full-sms::provider_aliases');
     }
 
-    public function make($alias = null) {
+    public static function make($alias = null) {
+        $defaul_provider = Config::get('full-sms::full-sms.provider');
+        $alias_providers = Config::get('full-sms::provider_aliases');
         if ($alias == null) {
-            $alias = $this->defaul_provider;
+            $alias = $defaul_provider;
         }
-        return new $this->alias_providers[$alias];
+        return new $alias_providers[$alias];
     }
 }
