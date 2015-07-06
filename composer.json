@@ -7,13 +7,14 @@
         "php": ">=5.4.0",
         "connect-corp/nexmo-client": "^0.1.0",
         "twilio/sdk": "^4.2",
-        "illuminate/support": "~5.0"
+        "illuminate/support": "~5.0",
+        "laravel/framework": "~5.0"
     },
     "suggest": {
     },
     "autoload": {
         "psr-4": {
-            "FortifyCode\\FullSms\\": "src/FullSms/"
+            "FortifyCode\\FullSms\\": "src/FortifyCode/FullSms/"
         }
     },
     "license": "MIT",
