@@ -1,0 +1,29 @@
+{
+    "name": "fortifycode/full-sms",
+    "description": "SMS Service that enclose Nexmo, Twilio and WhatsApp",
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "connect-corp/nexmo-client": "^0.1.0",
+        "twilio/sdk": "^4.2",
+        "illuminate/support": "~5.0"
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "classmap": [
+            "src/commands"
+        ],
+        "psr-4": {
+            "FortifyCode\\FullSms\\": "src/FullSms/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nestor Mata Cuthbert",
+            "email": "nestor@profesional.co.cr"
+        }
+    ]
+}
