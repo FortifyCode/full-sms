@@ -12,9 +12,9 @@
     "suggest": {
     },
     "autoload": {
-        "classmap": [
-            "src/commands"
-        ],
+        //"classmap": [
+        //    "src/commands"
+        //],
         "psr-4": {
             "FortifyCode\\FullSms\\": "src/FullSms/"
         }
