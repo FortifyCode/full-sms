@@ -9,4 +9,5 @@ namespace FortifyCode\FullSms\Providers;
 
 abstract class SmsProvider {
 
+    abstract public function sendSMS($to, $message, $from = null);
 }

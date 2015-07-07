@@ -1,6 +1,6 @@
 {
     "name": "fortifycode/full-sms",
-    "description": "SMS Service that enclose Nexmo, Twilio and WhatsApp",
+    "description": "SMS Service that enclose Nexmo, Twilio and WhatsApp for Laravel",
     "type": "library",
     "minimum-stability": "dev",
     "require": {

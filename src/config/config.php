@@ -8,4 +8,14 @@ return array(
         'twilio' => 'FortifyCode\FullSms\Providers\TwilioSmsProvider',
         'nexmo' => 'FortifyCode\FullSms\Providers\NexmoSmsProvider',
     ],
+    'twilio' => [
+        'sid' => '',
+        'token' => '',
+        'default_number' => '',
+    ],
+    'nexmo' => [
+        'api_key' => '',
+        'api_secret' => '',
+        'default_number' => '',
+    ],
 );
