@@ -6,6 +6,9 @@
 
 namespace FortifyCode\FullSms\Providers;
 
+use Illuminate\Support\Facades\Config;
+use Nexmo\Client;
+
 
 class NexmoSmsProvider extends SmsProvider {
     private $client;
