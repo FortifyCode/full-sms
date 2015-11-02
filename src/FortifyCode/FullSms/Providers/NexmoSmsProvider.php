@@ -51,7 +51,7 @@ class NexmoSmsProvider extends SmsProvider {
     public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = ""){
 
         try {
-            dd($this->client);
+            
             $service = $this->client->number;
             $response = $service->number->search($countryCode);
         } catch (Exception $e) {
