@@ -37,4 +37,28 @@ class TwilioSmsProvider extends SmsProvider {
     }
 
 
+    public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = ""){
+
+        $filterParams = array();
+        if(!empty($areaCode)){
+            $filterParams["AreaCode"] = $areaCode;
+        }
+        if(!empty($regionCode)){
+            $filterParams["InRegion"] = $regionCode;
+        }
+
+        $avilableNumbers = $this->client->account->available_phone_numbers->getList($countryCode, 'Local', $filterParams);
+
+        $numbers = [];
+        foreach($avilableNumbers->available_phone_numbers as $number){
+
+            $numbers[] = $number->phone_number;
+
+        }
+
+        return $numbers;
+
+    }
+
+
 }

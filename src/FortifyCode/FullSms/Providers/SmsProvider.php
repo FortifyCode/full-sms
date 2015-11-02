@@ -10,4 +10,6 @@ namespace FortifyCode\FullSms\Providers;
 abstract class SmsProvider {
 
     abstract public function sendSMS($to, $message, $from = null);
+
+    abstract public function numbersAvailable($country, $areaCode, $regionCode);
 }
