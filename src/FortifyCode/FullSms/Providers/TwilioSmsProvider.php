@@ -50,10 +50,12 @@ class TwilioSmsProvider extends SmsProvider {
         $avilableNumbers = $this->client->account->available_phone_numbers->getList($countryCode, 'Local', $filterParams);
 
         $numbers = [];
-        foreach($avilableNumbers->available_phone_numbers as $number){
+        if(count($avilableNumbers->available_phone_numbers) > 0){
+            foreach($avilableNumbers->available_phone_numbers as $number){
 
-            $numbers[] = $number->phone_number;
+                $numbers[] = $number->phone_number;
 
+            }
         }
 
         return $numbers;

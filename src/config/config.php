@@ -14,8 +14,8 @@ return array(
         'default_number' => '+17656130961',
     ],
     'nexmo' => [
-        'api_key' => '',
-        'api_secret' => '',
-        'default_number' => '',
+        'api_key' => 'eef2d0b3',
+        'api_secret' => '6e6b7ae5',
+        'default_number' => '+50672004393',
     ],
 );

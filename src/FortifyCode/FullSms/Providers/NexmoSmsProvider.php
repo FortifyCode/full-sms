@@ -46,4 +46,22 @@ class NexmoSmsProvider extends SmsProvider {
         }
         return false;
     }
+
+
+    public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = ""){
+
+        try {
+            $response = $this->client->number->search($countryCode);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+        $all = $response->all();
+        if (isset($all['numbers'])) {
+            foreach ($all['numbers'] as $n) {
+                printf("%d  \$%01.2f  %-10s  %-15s\n", $n['msisdn'], $n['cost'], $n['type'], join(',', $n['features']));
+            }
+        }
+
+    }
+
 }
