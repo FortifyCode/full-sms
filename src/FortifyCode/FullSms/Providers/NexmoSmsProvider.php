@@ -52,7 +52,7 @@ class NexmoSmsProvider extends SmsProvider {
 
         try {
             $service = $this->client->number;
-            $response = $service->number->search($countryCode);
+            $response = $service->search($countryCode);
         } catch (Exception $e) {
             die($e->getMessage());
         }
