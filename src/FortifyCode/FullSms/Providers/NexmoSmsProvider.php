@@ -53,16 +53,19 @@ class NexmoSmsProvider extends SmsProvider {
         try {
             $response = $this->client->number->search($countryCode);
         } catch (Exception $e) {
-            die($e->getMessage());
+            $response = "Error: " . $e->getMessage();
+            return $response;
         }
         $all = $response->all();
         if (isset($all['numbers'])) {
-            foreach ($all['numbers'] as $n) {
-                //TODO CLEAN THE RETURN
-                printf("%d  \$%01.2f  %-10s  %-15s\n", $n['msisdn'], $n['cost'], $n['type'], join(',', $n['features']));
+            $numbers = [];
+            foreach ($all['numbers'] as $number) {
+                $numbers[] = $number["msisdn"];
+                //printf("%d  \$%01.2f  %-10s  %-15s\n", $n['msisdn'], $n['cost'], $n['type'], join(',', $n['features']));
             }
         }
 
+        return $numbers;
     }
 
     public function buyNumber($phoneNumber, $countryCode){
