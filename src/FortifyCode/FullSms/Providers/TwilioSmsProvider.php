@@ -62,5 +62,23 @@ class TwilioSmsProvider extends SmsProvider {
 
     }
 
+    public function buyNumber($phoneNumber, $country = ""){
+
+        $result = "";
+        try {
+            if(!empty($phoneNumber)) {
+                $number = $this->client->account->incoming_phone_numbers->create(array(
+                    'PhoneNumber' => $phoneNumber
+                ));
+            }
+            $result = true;
+        } catch (Exception $e) {
+            $result = "Error: " . $e->getMessage();
+        }
+
+        return $result;
+
+    }
+
 
 }

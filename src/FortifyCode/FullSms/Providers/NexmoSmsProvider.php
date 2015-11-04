@@ -51,18 +51,38 @@ class NexmoSmsProvider extends SmsProvider {
     public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = ""){
 
         try {
-            $service = $this->client->number;
-            $response = $service->search($countryCode);
+            $response = $this->client->number->search($countryCode);
         } catch (Exception $e) {
             die($e->getMessage());
         }
         $all = $response->all();
         if (isset($all['numbers'])) {
             foreach ($all['numbers'] as $n) {
+                //TODO CLEAN THE RETURN
                 printf("%d  \$%01.2f  %-10s  %-15s\n", $n['msisdn'], $n['cost'], $n['type'], join(',', $n['features']));
             }
         }
 
     }
+
+    public function buyNumber($phoneNumber, $countryCode){
+
+        $country = $countryCode;
+        $msisdn = $phoneNumber; // Number found using $nexmo->number->search()
+        $result = "";
+        try {
+            $response = $this->client->number->buy($country, $msisdn);
+        } catch (Exception $e) {
+            $result = "Error: " . $e->getMessage();
+        }
+        if (200 == $response['error-code']) {
+            $result = true;
+        }
+
+        return $result;
+
+    }
+
+
 
 }
