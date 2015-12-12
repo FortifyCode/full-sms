@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Config;
 use Services_Twilio;
 
 class TwilioSmsProvider extends SmsProvider {
+    /** @var Services_Twilio */
     private $client;
     private $default_from_number;
 
@@ -47,11 +48,11 @@ class TwilioSmsProvider extends SmsProvider {
             $filterParams["InRegion"] = $regionCode;
         }
 
-        $avilableNumbers = $this->client->account->available_phone_numbers->getList($countryCode, 'Local', $filterParams);
+        $availableNumbers = $this->client->account->available_phone_numbers->getList($countryCode, 'Local', $filterParams);
 
         $numbers = [];
-        if(count($avilableNumbers->available_phone_numbers) > 0){
-            foreach($avilableNumbers->available_phone_numbers as $number){
+        if(count($availableNumbers->available_phone_numbers) > 0){
+            foreach($availableNumbers->available_phone_numbers as $number){
 
                 $numbers[] = $number->phone_number;
 
