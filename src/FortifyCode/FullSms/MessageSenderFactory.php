@@ -18,6 +18,6 @@ class MessageSenderFactory {
             $alias = $defaul_provider;
         }
         $reflection = new ReflectionClass($alias_providers[$alias]);
-        return new $reflection->newInstanceArgs(array($config));
+        return $reflection->newInstanceArgs(array($config));
     }
 }
