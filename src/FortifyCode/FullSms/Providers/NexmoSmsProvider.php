@@ -6,77 +6,80 @@
 
 namespace FortifyCode\FullSms\Providers;
 
+use Exception;
+use FortifyCode\FortifyCode\FullSms\Exceptions\RequestFailed;
+use FortifyCode\FortifyCode\FullSms\Models\PhoneNumber;
 use Illuminate\Support\Facades\Config;
 use Nexmo\Client;
 
 
-class NexmoSmsProvider extends SmsProvider {
+class NexmoSmsProvider extends SmsProvider
+{
     private $client;
     private $default_from_number;
 
-    function __construct() {
-        $api_key = Config::get('full-sms.nexmo.api_key');
-        $api_secret = Config::get('full-sms.nexmo.api_secret');
-        $this->client = new Client($api_key, $api_secret);
-        $this->default_from_number = Config::get('full-sms.nexmo.default_number');
+    function __construct($config = [])
+    {
+        $key = isset($config['key']) ? $config['key'] : Config::get('full-sms.nexmo.api_key');
+        $secret = isset($config['secret']) ? $config['secret'] : Config::get('full-sms.nexmo.api_secret');;
+        $this->client = new Client(['apiKey' => $key, 'apiSecret' => $secret]);
+        $this->default_from_number = isset($config['default_number']) ? $config['default_number'] : null;
     }
 
-    public function sendSMS($to, $message, $from = null) {
+    public function sendSMS($to, $message, $from = null)
+    {
         if (!$from) {
             $from = $this->default_from_number;
         }
-        $service = $this->client->message;
-        $response = $service->invoke(
-            $from,
-            $to,
-            'text',
-            $message,
-            null //'status_rep_req', // Receive delivery notification
-        //'client_ref', // TODO: set client ID here or something similar
-        //'net_code',
-        //'vcard',
-        //'vcal',
-        //1,
-        //'class',
-        //'body',
-        //'udh'
-        );
-        if ($response && $response['message-count'] > 0) {
-            return $response['messages'][0]['message-id'];
+        try {
+            $service = $this->client->message;
+            $response = $service->invoke(
+                $from,
+                $to,
+                'text',
+                $message,
+                null
+            );
+            if ($response && $response['message-count'] > 0) {
+                return intval($response['messages'][0]['message-id']);
+            }
+        } catch (Exception $e) {
+            throw new RequestFailed('nexmo', 'Could not send number', 500, $e);
         }
         return false;
     }
 
 
-    public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = ""){
+    public function numbersAvailable($countryCode = "US", $areaCode = "", $regionCode = "")
+    {
 
         try {
             $response = $this->client->number->search($countryCode);
         } catch (Exception $e) {
-            $response = "Error: " . $e->getMessage();
-            return $response;
+            throw new RequestFailed('nexmo', 'Could not retrieve search of numbers', 501, $e);
         }
+        $numbers = [];
         $all = $response->all();
         if (isset($all['numbers'])) {
             $numbers = [];
             foreach ($all['numbers'] as $number) {
-                $numbers[] = $number["msisdn"];
-                //printf("%d  \$%01.2f  %-10s  %-15s\n", $n['msisdn'], $n['cost'], $n['type'], join(',', $n['features']));
+                $numbers[] = new PhoneNumber($number['msisdn'], $number['country'], 'nexmo');
             }
         }
 
         return $numbers;
     }
 
-    public function buyNumber($phoneNumber, $countryCode){
+    public function buyNumber($phoneNumber, $countryCode)
+    {
 
         $country = $countryCode;
-        $msisdn = $phoneNumber; // Number found using $nexmo->number->search()
-        $result = "";
+        $msisdn = $phoneNumber;
+        $result = null;
         try {
             $response = $this->client->number->buy($country, $msisdn);
         } catch (Exception $e) {
-            $result = "Error: " . $e->getMessage();
+            throw new RequestFailed('nexmo', 'Could not buy the number', 502, $e);
         }
         if (200 == $response['error-code']) {
             $result = true;
@@ -85,7 +88,6 @@ class NexmoSmsProvider extends SmsProvider {
         return $result;
 
     }
-
 
 
 }
