@@ -41,7 +41,7 @@ class NexmoSmsProvider extends SmsProvider
                 null
             );
             if ($response && $response['message-count'] > 0) {
-                return intval($response['messages'][0]['message-id']);
+                return $response['messages'][0]['message-id'];
             }
         } catch (Exception $e) {
             throw new RequestFailed('nexmo', 'Could not send number', 500, $e);
