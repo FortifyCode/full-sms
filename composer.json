@@ -3,12 +3,18 @@
     "description": "SMS Service that enclose Nexmo, Twilio and WhatsApp for Laravel",
     "type": "library",
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url" : "https://github.com/quinncomendant/nexmo-client"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
+        "connect-corp/nexmo-client": "dev-master",
         "twilio/sdk": "^4.2",
         "illuminate/support": "~5.0",
-        "laravel/framework": "~5.0",
-        "connect-corp/nexmo-client": "^0.1.0"
+        "laravel/framework": "~5.0"
     },
     "suggest": {
     },

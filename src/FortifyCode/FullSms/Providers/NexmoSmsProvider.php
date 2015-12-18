@@ -22,7 +22,7 @@ class NexmoSmsProvider extends SmsProvider
     {
         $key = isset($config['key']) ? $config['key'] : Config::get('full-sms.nexmo.api_key');
         $secret = isset($config['secret']) ? $config['secret'] : Config::get('full-sms.nexmo.api_secret');;
-        $this->client = new Client($key, $secret);
+        $this->client = new Client(['apiKey' => $key, 'apiSecret' => $secret]);
         $this->default_from_number = isset($config['default_number']) ? $config['default_number'] : null;
     }
 
