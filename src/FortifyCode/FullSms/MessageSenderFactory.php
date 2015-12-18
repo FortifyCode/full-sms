@@ -16,6 +16,7 @@ class MessageSenderFactory {
         if (!$alias) {
             $alias = $defaul_provider;
         }
-        return new $alias_providers[$alias]($config);
+        $reflection = new \ReflectionClass($alias_providers[$alias]);
+        return new $reflection->newInstanceArgs(array($config));
     }
 }
