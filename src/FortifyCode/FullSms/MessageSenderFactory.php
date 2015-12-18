@@ -8,6 +8,7 @@ namespace FortifyCode\FullSms;
 
 
 use Illuminate\Support\Facades\Config;
+use ReflectionClass;
 
 class MessageSenderFactory {
     public static function make($alias = null, $config = []) {
@@ -16,7 +17,7 @@ class MessageSenderFactory {
         if (!$alias) {
             $alias = $defaul_provider;
         }
-        $reflection = new \ReflectionClass($alias_providers[$alias]);
+        $reflection = new ReflectionClass($alias_providers[$alias]);
         return new $reflection->newInstanceArgs(array($config));
     }
 }

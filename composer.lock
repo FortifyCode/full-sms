@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "132b63c0c492b5eb5ce4c9efe4bebb40",
-    "content-hash": "402901e265ec28361a1c9beda92be380",
+    "hash": "94b7cb6965af6f9c320ef92496e15c56",
+    "content-hash": "694e88d1feec1ef492625ed78ba0d9b0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -66,13 +66,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/quinncomendant/nexmo-client.git",
-                "reference": "5583a90a47636ce3ae15b8d5c09c0d6e7b59d7e6"
+                "url": "https://github.com/ConnectCorp/nexmo-client.git",
+                "reference": "f0aac3b87f45335ce76e6e628f92c6ba3e29005e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quinncomendant/nexmo-client/zipball/5583a90a47636ce3ae15b8d5c09c0d6e7b59d7e6",
-                "reference": "5583a90a47636ce3ae15b8d5c09c0d6e7b59d7e6",
+                "url": "https://api.github.com/repos/ConnectCorp/nexmo-client/zipball/f0aac3b87f45335ce76e6e628f92c6ba3e29005e",
+                "reference": "f0aac3b87f45335ce76e6e628f92c6ba3e29005e",
                 "shasum": ""
             },
             "require": {
@@ -93,11 +93,7 @@
                     "Nexmo\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Nexmo\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -108,10 +104,7 @@
                 "nexmo",
                 "sdk"
             ],
-            "support": {
-                "source": "https://github.com/quinncomendant/nexmo-client/tree/master"
-            },
-            "time": "2015-08-30 23:22:00"
+            "time": "2015-09-08 12:22:42"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -521,7 +514,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b79583b0581eb30163949d64132f4d80f5c28f97",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/876ba124d58608f7b5298a5175a041eb1688fb19",
                 "reference": "b79583b0581eb30163949d64132f4d80f5c28f97",
                 "shasum": ""
             },
@@ -649,7 +642,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0888b18acf3d21197756516cffdc4a70ed9e9eb3",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9f6b1ffc949ddaea3f63a2fc848a0684c276dcd4",
                 "reference": "0888b18acf3d21197756516cffdc4a70ed9e9eb3",
                 "shasum": ""
             },
@@ -733,7 +726,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/cab3ff71ffc802af272928ff71341cfc51e8ee98",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/205f528f5b23e5b9a3e95991d38da2ef9b2db408",
                 "reference": "cab3ff71ffc802af272928ff71341cfc51e8ee98",
                 "shasum": ""
             },
@@ -1210,7 +1203,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/8b7b23b8d6e46a83abd34ea489535c416ccc6d59",
+                "url": "https://api.github.com/repos/symfony/console/zipball/ff96711b696b2f6ee7cb8a0f0348084709207138",
                 "reference": "8b7b23b8d6e46a83abd34ea489535c416ccc6d59",
                 "shasum": ""
             },
@@ -1488,7 +1481,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/37e30c355f769e399a04186a25baaf478b2b850f",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/efeb0312a80bdf16b35ffca9427ad640b674f64b",
                 "reference": "37e30c355f769e399a04186a25baaf478b2b850f",
                 "shasum": ""
             },
@@ -2082,9 +2075,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "connect-corp/nexmo-client": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
