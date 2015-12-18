@@ -5,7 +5,7 @@
  * At: 12/17/15 6:58 PM
  */
 
-namespace FortifyCode\FortifyCode\FullSms\Models;
+namespace FortifyCode\FullSms\Models;
 
 
 class PhoneNumber

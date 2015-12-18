@@ -8,8 +8,8 @@ namespace FortifyCode\FullSms\Providers;
 
 
 use Exception;
-use FortifyCode\FortifyCode\FullSms\Exceptions\RequestFailed;
-use FortifyCode\FortifyCode\FullSms\Models\PhoneNumber;
+use FortifyCode\FullSms\Exceptions\RequestFailed;
+use FortifyCode\FullSms\Models\PhoneNumber;
 use Illuminate\Support\Facades\Config;
 use Services_Twilio;
 

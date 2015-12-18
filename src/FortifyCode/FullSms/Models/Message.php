@@ -5,7 +5,7 @@
  * At: 12/17/15 6:59 PM
  */
 
-namespace FortifyCode\FortifyCode\FullSms\Models;
+namespace FortifyCode\FullSms\Models;
 
 
 class Message

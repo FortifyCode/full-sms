@@ -5,7 +5,7 @@
  * At: 12/17/15 6:40 PM
  */
 
-namespace FortifyCode\FortifyCode\FullSms\Exceptions;
+namespace FortifyCode\FullSms\Exceptions;
 
 
 use Exception;
